@@ -1,0 +1,12 @@
+{
+  "name": "ocean-jornada-backend-maio-2024",
+  "version": "1.0.0",
+  "description": "Projeto da Jornada Backend de Maio/2024 do Samsung Ocean.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
