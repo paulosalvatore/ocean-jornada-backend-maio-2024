@@ -67,4 +67,16 @@ app.put('/item/:id', function (req, res) {
   res.send('Item atualizado com sucesso: ' + id + ', ' + atualizarItem)
 })
 
+// Endpoint de Delete [DELETE] /item/:id
+app.delete('/item/:id', function (req, res) {
+  // Acessar o parâmetro de rota ID
+  const id = req.params.id
+
+  // Executa a operação de exclusão desse item pelo índice
+  delete itens[id - 1]
+
+  // Enviamos uma mensagem de sucesso
+  res.send('Item removido com sucesso: ' + id)
+})
+
 app.listen(3000)
