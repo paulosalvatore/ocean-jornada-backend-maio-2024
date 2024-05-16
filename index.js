@@ -70,7 +70,7 @@ async function main() {
   })
 
   // Endpoint de Update [PUT] /item/:id
-  app.put('/item/:id', function (req, res) {
+  app.put('/item/:id', async function (req, res) {
     // Acessar o ID do parâmetro de rota
     const id = req.params.id
 
@@ -79,8 +79,11 @@ async function main() {
     const body = req.body
     const atualizarItem = body.nome
 
-    // Atualizar na lista o item recebido
-    itens[id - 1] = atualizarItem
+    // Atualizar na collection o item recebido
+    await collection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: { nome: atualizarItem } }
+    )
 
     // Enviamos uma mensagem de sucesso
     res.send('Item atualizado com sucesso: ' + id + ', ' + atualizarItem)
