@@ -62,8 +62,8 @@ async function main() {
     // Acessar o item no corpo da requisição
     const novoItem = body.nome
 
-    // Adicionar o novo item na lista
-    itens.push(novoItem)
+    // Adicionar o novo item na collection
+    collection.insertOne({ nome: novoItem })
 
     // Enviar uma mensagem de sucesso
     res.send('Item adicionado com sucesso: ' + novoItem)
