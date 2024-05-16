@@ -26,9 +26,16 @@ async function main() {
   const itens = ['Rick Sanchez', 'Morty Smith', 'Summer Smith']
   //              0               1              2
 
+  const db = client.db(dbName)
+  const collection = db.collection('item')
+
   // Endpoint de Read All [GET] /item
-  app.get('/item', function (req, res) {
-    res.send(itens.filter(Boolean))
+  app.get('/item', async function (req, res) {
+    // Acesso a lista de documentos na collection
+    const documentos = await collection.find().toArray()
+
+    // Envio os documentos como resposta
+    res.send(documentos)
   })
 
   // Endpoint de Read By ID [GET] /item/:id
